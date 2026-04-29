@@ -16,7 +16,7 @@ A SPIP plugin is a directory in `plugins/` with a `paquet.xml` manifest. Plugins
 | `paquet.xml` | Manifest — required |
 | `options.php` | Loaded on every page — constants, global config |
 | `fonctions.php` | Custom balises/filtres available in squelettes |
-| `_pipelines.php` | Pipeline handler functions |
+| `monplugin_pipelines.php` (or `_pipelines.php`) | Pipeline handler functions |
 | `_administrations.php` | DB schema creation/upgrades (versioned by `schema=` in paquet.xml) |
 | `lang/monplugin_fr.php` | i18n strings |
 | `formulaires/mon_form.html` + `.php` | CVT form (template + logic) |
@@ -76,3 +76,5 @@ function formulaires_mon_form_traiter_dist() {
 ```
 
 Full reference: `references/paquet-xml.md` · `references/pipelines-catalog.md` · `references/api.md`
+
+For squelette/template work inside a plugin, see the `spip` skill.
