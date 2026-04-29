@@ -2,6 +2,17 @@
 
 Standard structure of a SPIP 4.1+ plugin. Extracted from the core's plugins-dist.
 
+## Table of contents
+
+1. [Directory tree](#directory-tree)
+2. [Special root-level files](#special-root-level-files)
+3. [Directories](#directories)
+4. [Summary: when is each file/directory loaded?](#summary-when-is-each-filedirectory-loaded)
+
+---
+
+## Directory tree
+
 ```
 monplugin/
 ├── paquet.xml                        # required manifest
