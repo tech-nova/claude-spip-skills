@@ -60,14 +60,16 @@ spip-plugins/
 └── references/
     ├── paquet-xml.md                 # Bloc 1 ✅
     ├── arborescence.md               # Bloc 1 ✅
-    ├── pipelines.md                  # Bloc 2 — large, needs TOC
-    ├── cvt-formulaires.md            # Bloc 3
-    ├── sql-api.md                    # Bloc 4
-    ├── declarer-table.md             # Bloc 4
-    ├── declarer-objet.md             # Bloc 4
-    ├── balises-filtres-criteres.md   # Bloc 4
-    ├── i18n.md                       # Bloc 4
-    └── cycle-de-vie.md               # Bloc 5
+    ├── pipelines.md                  # Bloc 2 ✅ — large, TOC present
+    ├── cvt-formulaires.md            # Bloc 3 ✅
+    ├── sql-api.md                    # Bloc 4 ✅
+    ├── declarer-table.md             # Bloc 4 ✅
+    ├── declarer-objet.md             # Bloc 4 ✅
+    ├── balises-filtres-criteres.md   # Bloc 4 ✅
+    ├── i18n.md                       # Bloc 4 ✅
+    ├── cycle-de-vie.md               # Bloc 5 ✅
+    ├── actions.md                    # Bloc 6 ✅
+    └── autorisations.md              # Bloc 6 ✅
 ```
 
 **Size constraint:** no reference file beyond ~350 lines without a TOC at the top.
@@ -131,9 +133,21 @@ Corpus hierarchy (prefer in this order):
 ### Rédaction finale SKILL.md ✅
 
 - [x] Workflow section: when to load which reference
-- [x] Quick-start: minimal plugin skeleton (paquet.xml + 3 files)
-- [x] Decision tree: "I want to do X → read Y"
-- [x] 149 lines — well under 300 line limit
+- [x] Quick-start: minimal plugin skeleton (paquet.xml + 3 files) — corrected to `<paquet>` element
+- [x] Decision tree: "I want to do X → read Y" — now includes actions.md and autorisations.md
+- [x] 161 lines — well under 300 line limit
+
+### Bloc 6 — Actions & Autorisations ✅
+
+- [x] **`actions.md`** — `action_nom_dist()` anatomy; `securiser_action` verify + generate; `generer_action_auteur`, `redirige_action_auteur`, `redirige_action_post`; `#URL_ACTION_AUTEUR` balise; redirect pattern; invariants
+- [x] **`autorisations.md`** — `autoriser()` API; lookup chain (8-step with `$type`, 4-step without); `autoriser_*_dist` naming; built-in statut values; `faire` catalogue; `#AUTORISER` balise; `autoriser_exception`; `autoriser_defaut_dist` default rule
+
+### Corrections post-review ✅
+
+- [x] Fixed `<plugin>` → `<paquet>` in `cycle-de-vie.md` and `SKILL.md` quick-start (was generating invalid XML)
+- [x] `editable='non'` now documents that it restricts `objet_modifier()` to `champs_editables`, not just UI
+- [x] `cvt-formulaires.md` traiter() now documents no-rollback behaviour and shows SQL transaction pattern
+- [x] Prefix standardised to `monplugin` throughout SKILL.md (was mixing `myplugin`/`monplugin`)
 
 ---
 
@@ -158,3 +172,5 @@ A reference file is **done** when:
 | 2026-04-29 | SKILL.md glossary as first section | Readers need the term mapping before any reference makes sense |
 | 2026-04-29 | `pipelines.md` gets its own TOC | Catalogue will exceed 350 lines; TOC mandatory per size constraint |
 | 2026-04-29 | `<pipeline action="">` documented as extension point | Non-obvious: many devs assume empty action = bug |
+| 2026-04-29 | Root element is `<paquet>`, not `<plugin>`; `<nom>` is a child element | Confirmed from forum/paquet.xml — `<plugin>` was a pre-4.x form |
+| 2026-04-29 | `editable='non'` restricts `objet_modifier()`, not just the UI | Source: `editer_objet.php:128` — `champs_editables` from descriptor filters the write list |
