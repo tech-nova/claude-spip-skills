@@ -35,50 +35,51 @@ description: Use when developing a SPIP plugin (paquet.xml present, _pipelines.p
 A SPIP plugin needs at minimum these files:
 
 ```
-myplugin/
+monplugin/
 ├── paquet.xml
-├── myplugin_pipelines.php   ← pipeline handlers
+├── monplugin_pipelines.php   ← pipeline handlers
 └── lang/
-    └── myplugin_fr.php      ← reference language strings
+    └── monplugin_fr.php      ← reference language strings
 ```
 
 **paquet.xml** (no schema, no DB):
 ```xml
-<plugin
-  nom="Mon Plugin"
-  prefix="myplugin"
+<paquet
+  prefix="monplugin"
   version="1.0.0"
-  compatibilite="[4.1;5.0["
+  compatibilite="[4.2.0;4.*]"
   etat="dev"
   categorie="divers">
 
+  <nom>Mon Plugin</nom>
   <auteur>Prénom Nom</auteur>
   <licence>GNU/GPL</licence>
 
-  <pipeline nom="mon_pipeline" inclure="myplugin_pipelines.php" />
+  <pipeline nom="mon_pipeline" inclure="monplugin_pipelines.php" />
 
-  <traduire module="myplugin" reference="fr" />
-</plugin>
+  <traduire module="monplugin" reference="fr" />
+</paquet>
 ```
 
 **paquet.xml** (with a database table):
 ```xml
-<plugin ... schema="1.0.0" ...>
-  ...
-  <install inclure="myplugin_administrations.php" />
+<paquet prefix="monplugin" version="1.0.0" schema="1.0.0" ...>
+
+  <nom>Mon Plugin</nom>
+  <install inclure="monplugin_administrations.php" />
 
   <!-- declare pipeline handlers for table declarations -->
-  <pipeline nom="declarer_tables_objets_sql" inclure="base/myplugin.php" />
-  <pipeline nom="declarer_tables_interfaces"  inclure="base/myplugin.php" />
-</plugin>
+  <pipeline nom="declarer_tables_objets_sql" inclure="base/monplugin.php" />
+  <pipeline nom="declarer_tables_interfaces"  inclure="base/monplugin.php" />
+</paquet>
 ```
 
-**myplugin_pipelines.php**:
+**monplugin_pipelines.php**:
 ```php
 <?php
 if (!defined('_ECRIRE_INC_VERSION')) { return; }
 
-function myplugin_mon_pipeline($flux) {
+function monplugin_mon_pipeline($flux) {
     // modify $flux['data'], return $flux
     return $flux;
 }
@@ -94,6 +95,8 @@ function myplugin_mon_pipeline($flux) {
 | Understand the directory layout and file loading order | `references/arborescence.md` |
 | Hook into SPIP events (content published, user logged in, etc.) | `references/pipelines.md` |
 | Add a contact/subscription/edit form | `references/cvt-formulaires.md` |
+| Write a secured action script (`action/`) | `references/actions.md` |
+| Check or grant permissions in PHP or squelettes | `references/autorisations.md` |
 | Read or write database rows | `references/sql-api.md` |
 | Create a new database table (not an objet éditorial) | `references/declarer-table.md` |
 | Create a new objet éditorial (with statut, edition form, search) | `references/declarer-objet.md` |
@@ -137,6 +140,15 @@ function myplugin_mon_pipeline($flux) {
 
 1. `references/balises-filtres-criteres.md` — add `#BALISE`, `|filtre`, or `{critère}`
 2. `references/declarer-table.md` → `declarer_tables_interfaces` for `table_des_traitements`
+
+### Adding secured actions
+
+1. `references/actions.md` — write `action_nom_dist()`, use `securiser_action`, check `autoriser`
+2. `references/autorisations.md` — define custom `autoriser_` functions
+
+### Restricting access
+
+1. `references/autorisations.md` — `autoriser()` API, lookup chain, writing `autoriser_X_Y_dist()`
 
 ---
 

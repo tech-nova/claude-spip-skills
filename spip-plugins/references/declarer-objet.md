@@ -107,7 +107,7 @@ function myplugin_declarer_tables_objets_sql($tables) {
 | `table_objet` | string | Plural for the loop type; defaults to `type + 's'` |
 | `table_objet_surnoms` | array | Accepted aliases in loops |
 | `page` | string | URL type for public pages; `''` = no public page |
-| `editable` | `'oui'/'non'` | Whether the edition UI is offered; default `'oui'` |
+| `editable` | `'oui'/'non'` | Whether the edition UI is offered; default `'oui'`. **Setting `'non'` also restricts `objet_modifier()` to columns listed in `champs_editables`** — if `champs_editables` is empty, `objet_modifier()` becomes a no-op on that object |
 | `parent` | array | `['type' => 'rubrique', 'champ' => 'id_rubrique']` for hierarchical objects |
 | `rechercher_champs` | array | Column weights for full-text search |
 | `tables_jointures` | array | Plural table names auto-joined in boucles |

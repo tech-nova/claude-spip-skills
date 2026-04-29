@@ -165,6 +165,24 @@ $rev = pipeline('formulaire_traiter', ['args' => [...], 'data' => $rev]);
 | `editable` | If present: override editability of the reloaded form |
 | `id_XX` | Convention: return the created/modified object's id for pipeline consumers |
 
+### Error handling and partial failures
+
+**SPIP does not rollback on failure.** There is no automatic transaction wrapping `traiter()`. If a partial write occurs (e.g. the row was inserted but the email notification failed), the side effect is permanent. To handle partial failures safely, wrap the critical section in a SQL transaction yourself:
+
+```php
+// ecrire/base/abstract_sql.php — transaction helpers
+sql_demarrer_transaction();
+$id = sql_insertq('spip_monplugin', $champs);
+if (!$id) {
+    // nothing to rollback yet, but don't continue
+    return ['message_erreur' => _T('monplugin:erreur_insertion')];
+}
+// ... more work ...
+sql_terminer_transaction();
+```
+
+Return `['message_erreur' => ...]` to signal failure; the form re-displays with the error. No automatic cleanup of already-applied effects occurs.
+
 ```php
 // plugins-dist/spip/forum/formulaires/forum.php:528
 function formulaires_forum_traiter_dist($objet, $id_objet, ..., $retour) {

@@ -7,21 +7,21 @@ attribute in `paquet.xml` and two PHP functions in the `_administrations.php` fi
 
 ## Activating installation support
 
-In `paquet.xml`, add the `schema` attribute to `<plugin>` and point `<install>` at the
+In `paquet.xml`, add the `schema` attribute to `<paquet>` and point `<install>` at the
 administrations file:
 
 ```xml
 <!-- paquet.xml -->
-<plugin
-  nom="Mon Plugin"
+<paquet
   prefix="monplugin"
   version="1.3.0"
   schema="1.3.0"
   ...>
 
+  <nom>Mon Plugin</nom>
   <install inclure="monplugin_administrations.php" />
   ...
-</plugin>
+</paquet>
 ```
 
 - `schema` is the **current schema version** — when it differs from the stored meta value, SPIP
