@@ -103,6 +103,12 @@ function monplugin_mon_pipeline($flux) {
 | Define a custom `#BALISE`, `|filtre`, or `{critère}` | `references/balises-filtres-criteres.md` |
 | Add translated strings to a plugin | `references/i18n.md` |
 | Write install/upgrade/uninstall logic (`_administrations.php`) | `references/cycle-de-vie.md` |
+| Build or customise private-space templates (liste, infos, contenu, editer) | `references/prive-objets.md` |
+| Understand what `?exec=mon_objets` / `?exec=mon_objet` provides out-of-the-box | `references/exec-generique.md` |
+| Control page cache duration, disable caching, or trigger invalidation | `references/cache.md` |
+| Support content in multiple languages (`lang`, `id_trad`, translation groups) | `references/multilinguisme.md` |
+| Run work asynchronously (background jobs, scheduled tasks) | `references/queue-jobs.md` |
+| Add chunked file upload (bigup) to a formulaire CVT | `references/upload-bigup.md` |
 
 ---
 
@@ -149,6 +155,26 @@ function monplugin_mon_pipeline($flux) {
 ### Restricting access
 
 1. `references/autorisations.md` — `autoriser()` API, lookup chain, writing `autoriser_X_Y_dist()`
+
+### Building the private-space UI for an objet éditorial
+
+1. `references/exec-generique.md` — what `?exec=mon_objets` / `?exec=mon_objet` provides for free
+2. `references/prive-objets.md` — create `liste/`, `infos/`, `contenu/` fragments as needed
+
+### Adding file upload to a form
+
+1. `references/upload-bigup.md` — enable bigup via `_bigup_rechercher_fichiers` in `charger()`
+2. `references/cvt-formulaires.md` — `verifier()` and `traiter()` with `$_FILES`
+
+### Running background work
+
+1. `references/queue-jobs.md` — `queue_add_job()`, `spip_jobs`, priority, deduplication
+2. `references/paquet-xml.md` → `<genie>` for periodic tasks
+
+### Supporting multiple languages in an objet
+
+1. `references/multilinguisme.md` — `lang`, `id_trad`, `action_referencer_traduction_dist()`
+2. `references/declarer-objet.md` — `titre` accessor must include `lang`
 
 ---
 

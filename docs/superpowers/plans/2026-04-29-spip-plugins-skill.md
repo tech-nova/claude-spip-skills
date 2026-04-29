@@ -69,7 +69,13 @@ spip-plugins/
     ├── i18n.md                       # Bloc 4 ✅
     ├── cycle-de-vie.md               # Bloc 5 ✅
     ├── actions.md                    # Bloc 6 ✅
-    └── autorisations.md              # Bloc 6 ✅
+    ├── autorisations.md              # Bloc 6 ✅
+    ├── prive-objets.md               # Bloc 7 ✅
+    ├── exec-generique.md             # Bloc 7 ✅
+    ├── cache.md                      # Bloc 7 ✅
+    ├── multilinguisme.md             # Bloc 7 ✅
+    ├── queue-jobs.md                 # Bloc 7 ✅
+    └── upload-bigup.md               # Bloc 7 ✅
 ```
 
 **Size constraint:** no reference file beyond ~350 lines without a TOC at the top.
@@ -141,6 +147,15 @@ Corpus hierarchy (prefer in this order):
 
 - [x] **`actions.md`** — `action_nom_dist()` anatomy; `securiser_action` verify + generate; `generer_action_auteur`, `redirige_action_auteur`, `redirige_action_post`; `#URL_ACTION_AUTEUR` balise; redirect pattern; invariants
 - [x] **`autorisations.md`** — `autoriser()` API; lookup chain (8-step with `$type`, 4-step without); `autoriser_*_dist` naming; built-in statut values; `faire` catalogue; `#AUTORISER` balise; `autoriser_exception`; `autoriser_defaut_dist` default rule
+
+### Bloc 7 — Private UI, Cache, Multilinguisme, Queue, Bigup ✅
+
+- [x] **`prive-objets.md`** — `prive/objets/` hierarchy (liste, infos, contenu, editer); fallback resolution; balises available per context; what SPIP provides vs. what the plugin must create
+- [x] **`exec-generique.md`** — `?exec=mon_objets` / `?exec=mon_objet` out-of-the-box; echafaudage sources; what is free vs. what requires custom squelettes; `url_voir` / `url_edit` descriptor keys; invariants
+- [x] **`cache.md`** — `#CACHE{n}`, `#CACHE{0}`, `statique`/`cache-client` modifiers; `_DUREE_CACHE_DEFAUT`, `_NO_CACHE`, `_VAR_NOCACHE`, `spip_interdire_cache`; invalidation via `suivre_invalideur()`; session-keyed caches; `$derniere_modif_invalide`
+- [x] **`multilinguisme.md`** — `lang` + `id_trad` columns; translation group mechanics; `action_referencer_traduction_dist()`; `{lang}`, `{id_trad}`, `{traduction}` critères; Polyglot compatibility
+- [x] **`queue-jobs.md`** — `queue_add_job()` full signature; `spip_jobs` schema; `_JQ_SCHEDULED`/`_JQ_PENDING`; `queue_link_job()`; execution model; fallback to synchronous; periodic tasks via `<genie>`
+- [x] **`upload-bigup.md`** — `_bigup_rechercher_fichiers` in `charger()`; `#SAISIE_FICHIER` vs `#BIGUP_TOKEN`; `$_FILES` in `verifier()`; file move in `traiter()`; pipeline flow; multi-form scoping
 
 ### Corrections post-review ✅
 
