@@ -42,7 +42,7 @@ A SPIP plugin is a directory in `plugins/` with a `paquet.xml` manifest. Plugins
 ## Pipeline Pattern
 
 ```php
-// In _pipelines.php
+// In monplugin_pipelines.php
 // Handler name = {prefix}_{pipeline_nom}
 function monplugin_post_edition($flux) {
     if ($flux['args']['table'] === 'spip_articles') {
