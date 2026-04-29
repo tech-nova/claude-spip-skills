@@ -45,14 +45,14 @@ $rows = sql_allfetsel(
 ### `sql_fetsel` — fetch single row
 
 ```php
-$row = sql_fetsel('titre, texte, date', 'spip_articles', "id_article=$id");
+$row = sql_fetsel('titre, texte, date', 'spip_articles', "id_article=" . intval($id));
 // Returns: ['titre'=>'...', 'texte'=>'...'] or false
 ```
 
 ### `sql_getfetsel` — fetch single field value
 
 ```php
-$titre = sql_getfetsel('titre', 'spip_articles', "id_article=$id");
+$titre = sql_getfetsel('titre', 'spip_articles', "id_article=" . intval($id));
 // Returns: 'Mon titre' or false
 ```
 
@@ -154,9 +154,8 @@ include_spip('inc/invalideur');
 // Invalidate cache for a specific object
 suivre_invalideur("id_article=" . intval($id));
 
-// Invalidate all caches (expensive — use sparingly)
-include_spip('inc/invalideur');
-lister_invalideurs(); // list current invalideurs
+// List current invalideurs (see inc/invalideur for full invalidation API)
+lister_invalideurs();
 ```
 
 ## Security
