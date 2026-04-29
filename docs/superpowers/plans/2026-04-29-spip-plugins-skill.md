@@ -107,33 +107,33 @@ Corpus hierarchy (prefer in this order):
 - [x] Source: `ecrire/paquet.xml` (master list) + cross-ref each plugin's usage
 - Note: 824 lines — TOC present, compliant with size rule
 
-### Bloc 3 — CVT formulaires
+### Bloc 3 — CVT formulaires ✅
 
-- [ ] `charger` / `verifier` / `traiter` signatures and contracts
-- [ ] `$flux` shape for the formulaire pipelines (`formulaire_charger`, `formulaire_verifier`, `formulaire_traiter`)
-- [ ] Multi-step formulaires (`cvt_multietapes`)
-- [ ] autosave pattern (`cvt_autosave`)
-- [ ] File: `inc/cvt_multietapes.php`, `inc/cvt_autosave.php` in core; `formulaires/` across plugins-dist
-- [ ] Real example: `formulaires/editer_forum.php` (forum plugin)
+- [x] `charger` / `verifier` / `traiter` signatures and contracts
+- [x] `$flux` shape for the formulaire pipelines (`formulaire_charger`, `formulaire_verifier`, `formulaire_traiter`)
+- [x] Multi-step formulaires (`cvt_multietapes`)
+- [x] autosave pattern (`cvt_autosave`)
+- [x] File: `inc/cvt_multietapes.php`, `inc/cvt_autosave.php` in core; `formulaires/` across plugins-dist
+- [x] Real example: `formulaires/forum.php` (forum plugin)
 
-### Bloc 4 — Auxiliaires
+### Bloc 4 — Auxiliaires ✅
 
-- [ ] **`sql-api.md`** — `sql_select`, `sql_insert`, `sql_update`, `sql_delete`, `sql_alter`, `sql_drop_table`; transaction helpers; `sql_quote`; quand utiliser `objet_modifier()` plutôt que SQL direct
-- [ ] **`declarer-table.md`** — `declarer_tables_principales`, `declarer_tables_auxiliaires`, `declarer_tables_interfaces`; champ structure; `$tables_principales` format
-- [ ] **`declarer-objet.md`** — `declarer_tables_objets_sql`; what makes an objet éditorial; `objet_modifier`, `objet_inserer`, `objet_instituer`; the `spip_objets_permanents` mechanism
-- [ ] **`balises-filtres-criteres.md`** — `balise_X_dist(&$p)` signature; `Champ` object API; custom critère signature; filtre registration in `_fonctions.php`
-- [ ] **`i18n.md`** — `_T('module:cle')`, `_T_ou_typo()`, `lang_select()`; `lang/module_fr.php` format; `traduire` pipeline; `paquet-module.xml` vs `module.xml`
+- [x] **`sql-api.md`** — `sql_select`, `sql_insertq`, `sql_updateq`, `sql_delete`, `sql_alter`, `sql_drop_table`; transaction helpers; `sql_quote`; when to use `objet_modifier()` vs raw SQL
+- [x] **`declarer-table.md`** — `declarer_tables_principales`, `declarer_tables_auxiliaires`, `declarer_tables_interfaces`; field/key structure; `$interfaces` sub-arrays
+- [x] **`declarer-objet.md`** — `declarer_tables_objets_sql`; objet éditorial descriptor keys; `objet_modifier`, `objet_inserer`, `objet_instituer`
+- [x] **`balises-filtres-criteres.md`** — `balise_X_dist(Champ $p)` signature; `Champ` object API; `critere_X_dist` signature; `Boucle` mutation; filtre registration in `_fonctions.php` / `spip_matrice`
+- [x] **`i18n.md`** — `_T('module:cle')`, `_L()`, `lang_select()`; `lang/module_fr.php` format; paquet-module lang file; `<traduire>` in paquet.xml
 
-### Bloc 5 — Cycle de vie
+### Bloc 5 — Cycle de vie ✅
 
-- [ ] **`cycle-de-vie.md`** — `_administrations.php` in depth: `maj_plugin()`, `maj_tables()`, migration step format; `_vider_tables()`; when `schema` bumps are mandatory vs. safe to defer; `install_plugin_actif()` hook
+- [x] **`cycle-de-vie.md`** — `_administrations.php` in depth: `maj_plugin()`, `maj_tables()`, migration step format; `_vider_tables()`; when `schema` bumps are required; `<install>` element in paquet.xml
 
-### Rédaction finale SKILL.md
+### Rédaction finale SKILL.md ✅
 
-- [ ] Workflow section: when to load which reference
-- [ ] Quick-start: minimal plugin skeleton (paquet.xml + 3 files)
-- [ ] Decision tree: "I want to do X → read Y"
-- [ ] Keep under 300 lines total
+- [x] Workflow section: when to load which reference
+- [x] Quick-start: minimal plugin skeleton (paquet.xml + 3 files)
+- [x] Decision tree: "I want to do X → read Y"
+- [x] 149 lines — well under 300 line limit
 
 ---
 
