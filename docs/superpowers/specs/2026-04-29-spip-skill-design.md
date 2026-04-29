@@ -2,7 +2,7 @@
 
 ## Goal
 
-Create a Claude Code skill (`spip`) that serves as a comprehensive fast-reference for experienced SPIP developers. The skill activates automatically when Claude detects a SPIP project and is also manually invokable via `/spip`.
+Create a Claude Code skill (`spip`) that serves as a comprehensive fast-reference for experienced SPIP developers. **Target: SPIP 4.1+.** The skill activates automatically when Claude detects a SPIP project and is also manually invokable via `/spip`.
 
 ## File Structure
 
@@ -61,7 +61,7 @@ description: Use when working in a SPIP project (paquet.xml present, squelette f
 - SQL API functions: `sql_select`, `sql_fetch`, `sql_allfetsel`, `sql_insert`, `sql_updateq`, `sql_delete` — signatures + examples
 - Common utility functions: `_request()`, `include_spip()`, `find_in_path()`, `pipeline()`
 - Cache management: `spip_clear_cache()`, cache invalidation patterns
-- Security helpers: `_request()` vs raw superglobals, `sécuriser_acces()`
+- Security helpers: `_request()` vs raw superglobals, `securiser_acces_low_sec()` (SPIP 4.1+, defined in `inc/acces`; replaces deprecated `securiser_acces()`)
 
 ## Trigger Conditions
 
