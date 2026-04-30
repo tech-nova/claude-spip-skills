@@ -5,7 +5,7 @@ description: Use when working in a SPIP squelettes folder, authoring BOUCLE loop
   web integrators building SPIP templates without PHP. Not for plugin development.
 ---
 
-# SPIP — Squelettes Reference (SPIP 4.1+)
+# SPIP — Squelettes Reference (SPIP 4+)
 
 SPIP generates pages from **squelettes** — `.html` files mixing HTML with BOUCLE loops and `#BALISE` tags. All template work lives in `squelettes/`. No PHP needed.
 
@@ -56,7 +56,7 @@ SPIP generates pages from **squelettes** — `.html` files mixing HTML with BOUC
 | `#TITRE` | Outputs value; empty string if absent |
 | `[(#TITRE)]` | Outputs nothing if empty (suppresses wrapper too) |
 | `[before(#TITRE)after]` | Wraps value with before/after only if not empty |
-| `[(#TITRE|filtre1|filtre2)]` | Chains filters; optional wrapper |
+| `[(#TITRE&#124;filtre1&#124;filtre2)]` | Chains filters; optional wrapper |
 
 ## Key Critères
 
