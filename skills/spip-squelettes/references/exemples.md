@@ -105,11 +105,11 @@ Article list with pre/post sections and empty-state fallback. The `<B_liste>` pr
 
 ## 4. Article mis en avant + liste restante (doublons)
 
-Feature the first (most recent) article prominently, then list the rest — `{doublons}` excludes any article already output in a previous BOUCLE in the same page.
+Feature the first (most recent) article prominently, then list the rest — The criteria `{doublons}` excludes any article already processed in a previous BOUCLE with the same criteria.
 
 ```html
 <!-- Article mis en avant -->
-<BOUCLE_une(ARTICLES){id_rubrique}{par date}{inverse}{limit 1}>
+<BOUCLE_une(ARTICLES){id_rubrique}{par date}{inverse}{limit 1}{doublons}>
 <article class="featured">
   [(#LOGO_ARTICLE_RUBRIQUE|image_reduire{600})]
   <h2><a href="#URL_ARTICLE">#TITRE</a></h2>
