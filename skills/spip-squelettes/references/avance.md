@@ -45,11 +45,14 @@ Arguments become `#ENV{key}` inside the included file:
 
 ### File resolution order
 
-SPIP searches for the fond in this order:
-1. `squelettes/` (site-specific — wins)
-2. Active theme folder
-3. Plugin folders (last activated wins)
-4. SPIP core templates
+SPIP searches for the template in this order:
+
+1. firstly in the list of folders specified in the `$dossier_squelettes` folder, if one has been defined;
+2. then in the 'squelettes/' folder located at site root;
+3. then in the list of folders in the `$plugins` variable;
+4. then in the site root;
+5. then in the 'squelettes-dist/' folder;
+6. and finally in the 'ecrire/' directory.
 
 This means you can override any default fond by creating a same-named file in `squelettes/`.
 
