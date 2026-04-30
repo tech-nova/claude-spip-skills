@@ -57,7 +57,7 @@ Brackets follow mathematical interval notation: `[` = inclusive, `]` = exclusive
 
 ---
 
-## Child elements
+## Child elements (must respect this order)
 
 ### `<nom>` — Required
 
