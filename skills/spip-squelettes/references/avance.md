@@ -209,28 +209,7 @@ To customize form validation or processing logic, use the `formulaire_charger`, 
 
 ---
 
-## Squelette Variants and File Precedence
-
-SPIP selects the most specific squelette file available for a given page request.
-
-### Article page precedence
-
-For `spip.php?article42` where article 42 is in rubrique 3:
-
-```
-squelettes/article-42.html    ← most specific (this article only)
-squelettes/article-3.html     ← this rubrique's articles
-squelettes/article.html       ← all articles (fallback)
-```
-
-### Rubrique page precedence
-
-```
-squelettes/rubrique-3.html    ← rubrique 3 only
-squelettes/rubrique.html      ← all rubriques (fallback)
-```
-
-### Custom page fonds
+## Custom page fonds
 
 Any file in `squelettes/` is accessible as a page:
 
@@ -238,20 +217,6 @@ Any file in `squelettes/` is accessible as a page:
 squelettes/plan.html          → accessible at ?page=plan
 squelettes/contact.html       → accessible at ?page=contact
 ```
-
-### Variant by language
-
-SPIP also resolves language variants:
-
-```
-squelettes/article.fr.html    ← French only
-squelettes/article.en.html    ← English only
-squelettes/article.html       ← all languages (fallback)
-```
-
-### Gotcha: variant files are not automatically advertised
-
-Creating `article-42.html` silently redirects all visitors of article 42. There is no admin warning. Document your variant files in the project to avoid confusion.
 
 ---
 
