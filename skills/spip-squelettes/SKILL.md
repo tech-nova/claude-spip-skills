@@ -56,7 +56,7 @@ SPIP generates pages from **squelettes** — `.html` files mixing HTML with BOUC
 | `#TITRE` | Outputs value; empty string if absent |
 | `[(#TITRE)]` | Outputs nothing if empty (suppresses wrapper too) |
 | `[before(#TITRE)after]` | Wraps value with before/after only if not empty |
-| `[(#TITRE&#124;filtre1&#124;filtre2)]` | Chains filters; optional wrapper |
+| `[(#TITRE\|filtre1\|filtre2)]` | Chains filters; optional wrapper |
 
 ## Key Critères
 
