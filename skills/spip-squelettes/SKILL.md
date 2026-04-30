@@ -1,7 +1,7 @@
 ---
 name: spip-squelettes
 description: Use when working in a SPIP squelettes folder, authoring BOUCLE loops,
-  #BALISE tags, critères, filtres, INCLURE fragments, or native formulaires. For
+  BALISE tags, critères, filtres, INCLURE fragments, or native formulaires. For
   web integrators building SPIP templates without PHP. Not for plugin development.
 ---
 
