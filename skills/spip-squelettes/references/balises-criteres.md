@@ -1,7 +1,5 @@
 # Balises & Critères Reference
 
-Source: spip.net/fr_article902.html, fr_article904.html, fr_article1823.html, fr_article1902.html, fr_article900.html (fetched 2026-04-30). SPIP 4.1+.
-
 ---
 
 ## Critères

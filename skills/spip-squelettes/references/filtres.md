@@ -10,8 +10,6 @@ Filters transform balise output using the `|` pipe character. Multiple filters c
 
 The first argument to a filter function is always the left-hand value; additional arguments follow in `{}`.
 
-Sources: [www.spip.net/fr_article901.html](https://www.spip.net/fr_article901.html), [fr_article5718.html](https://www.spip.net/fr_article5718.html), [programmer.spip.net/Syntaxe-des-filtres](https://programmer.spip.net/Syntaxe-des-filtres), [programmer.spip.net/Les-filtres-de-tests](https://programmer.spip.net/Les-filtres-de-tests)
-
 ---
 
 ## Text Filters

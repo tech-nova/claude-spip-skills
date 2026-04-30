@@ -1,7 +1,5 @@
 # BOUCLE Types Reference
 
-Source: programmer.spip.net, www.spip.net (fetched 2026-04-30). SPIP 4.1+.
-
 ---
 
 ## Anatomy of a BOUCLE
