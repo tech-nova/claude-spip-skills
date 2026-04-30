@@ -83,7 +83,6 @@ Article list with pre/post sections and empty-state fallback. The `<B_liste>` pr
 <section class="articles">
   <h2>Articles</h2>
   <ul>
-</B_liste>
 
 <BOUCLE_liste(ARTICLES){id_rubrique}{par date}{inverse}{pagination 10}>
     <li>
@@ -93,15 +92,13 @@ Article list with pre/post sections and empty-state fallback. The `<B_liste>` pr
     </li>
 </BOUCLE_liste>
 
-<BB_liste>
   </ul>
   #PAGINATION
 </section>
-</BB_liste>
+</B_liste>
 
-<//B_liste>
 <p>Aucun article dans cette rubrique.</p>
-<///B_liste>
+<//B_liste>
 ```
 
 ---
