@@ -273,14 +273,14 @@ Shows different content depending on whether the visitor is logged in. Uses `BOU
   <a href="#URL_LOGOUT">Se déconnecter</a>
 </div>
 </BOUCLE_connecte>
+</B_connecte>
 
 <!-- For anonymous visitors -->
-<//B_connecte>
 <div class="visitor-area">
   #FORMULAIRE_LOGIN
   <p>Pas encore inscrit ? <a href="#URL_INSCRIPTION">Créer un compte</a></p>
 </div>
-<///B_connecte>
+<//B_connecte>
 ```
 
 For finer-grained role checks (e.g., only admins):
