@@ -16,7 +16,7 @@ Extracted from 22 real files: SPIP 4.4 core + plugins-dist (`/src/spip/spip`).
     etat="stable"
     compatibilite="[4.2.0;4.*]"
     schema="1.0.0"
-    logo="images/monplugin-32.png"
+    logo="prive/themes/spip/images/monplugin-32.png"
     documentation="https://..."
 >
 ```
@@ -31,7 +31,7 @@ Extracted from 22 real files: SPIP 4.4 core + plugins-dist (`/src/spip/spip`).
 | `etat` | yes | Development state | `stable`, `test`, `dev` |
 | `compatibilite` | yes | Compatible SPIP version range | see notation below |
 | `schema` | no | Database schema version (triggers `_upgrade`) | `1.2.2`, `2022022303` |
-| `logo` | no | Relative path to the plugin icon | `prive/themes/spip/images/forum-32.png` |
+| `logo` | no | Relative path to the plugin folder | `prive/themes/spip/images/forum-32.png` |
 | `documentation` | no | External documentation URL | URL |
 | `demonstration` | no | Demo URL | URL |
 | `developpement` | no | Source repository URL | git URL |
@@ -224,7 +224,7 @@ Adds an entry to the private space navigation.
 | `nom` | yes | Unique menu identifier |
 | `titre` | yes | i18n key in `module:key` or `key` form |
 | `parent` | no | Parent menu slot (`menu_edition`, `menu_activite`, `menu_administration`, `menu_configuration`, `menu_publication`, `menu_squelette`, `outils_rapides`, `outils_collaboratifs`, …) |
-| `icone` | no | Path to the icon |
+| `icone` | no | Path to the icon relative to the private theme folder (usualy 'prive/themes/spip') |
 | `action` | no | Target exec page |
 | `parametres` | no | Additional GET parameters (use `&amp;`); `@id_rubrique@` is replaced dynamically |
 | `position` | no | Relative position (`-1` = end) |
@@ -291,7 +291,7 @@ Declares a JS file to include.
     etat="stable"
     compatibilite="[4.2.0;4.*]"
     schema="1.0.0"
-    logo="images/monplugin-32.png"
+    logo="prive/themes/spip/images/monplugin-32.png"
 >
     <nom>Mon Plugin</nom>
     <!-- Fait quelque chose d'utile -->
@@ -302,9 +302,9 @@ Declares a JS file to include.
 
     <traduire module="monplugin" reference="fr" gestionnaire="salvatore" />
 
-    <pipeline nom="autoriser"            inclure="monplugin_autoriser.php" />
+    <pipeline nom="autoriser" inclure="monplugin_autoriser.php" />
     <pipeline nom="declarer_tables_objets_sql" inclure="base/monplugin.php" />
-    <pipeline nom="post_edition"         inclure="monplugin_pipelines.php" />
+    <pipeline nom="post_edition" inclure="monplugin_pipelines.php" />
 
     <necessite nom="archiviste" compatibilite="[2.2.0;]" />
 
