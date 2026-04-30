@@ -66,13 +66,17 @@ monplugin/
 <paquet prefix="monplugin" version="1.0.0" schema="1.0.0" ...>
 
   <nom>Mon Plugin</nom>
-  <install inclure="monplugin_administrations.php" />
 
   <!-- declare pipeline handlers for table declarations -->
   <pipeline nom="declarer_tables_objets_sql" inclure="base/monplugin.php" />
   <pipeline nom="declarer_tables_interfaces"  inclure="base/monplugin.php" />
 </paquet>
 ```
+
+The `schema=` attribute alone activates installation/upgrade support. SPIP looks for
+`{prefix}_administrations.php` at the plugin root **by naming convention** — it must
+exist and contain `{prefix}_upgrade()` and `{prefix}_vider_tables()`. There is **no**
+`<install>` tag in the `paquet.xml` DTD (it was removed when `plugin.xml` was deprecated).
 
 **monplugin_pipelines.php**:
 ```php
@@ -185,3 +189,4 @@ All examples in this skill are extracted from:
 - plugins-dist: `/src/spip/spip/plugins-dist/spip/`
 
 When in doubt, read the source. The spip.net documentation is incomplete for SPIP 4.x.
+

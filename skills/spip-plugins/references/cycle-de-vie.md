@@ -7,8 +7,7 @@ attribute in `paquet.xml` and two PHP functions in the `_administrations.php` fi
 
 ## Activating installation support
 
-In `paquet.xml`, add the `schema` attribute to `<paquet>` and point `<install>` at the
-administrations file:
+In `paquet.xml`, simply add the `schema` attribute to `<paquet>`:
 
 ```xml
 <!-- paquet.xml -->
@@ -19,17 +18,20 @@ administrations file:
   ...>
 
   <nom>Mon Plugin</nom>
-  <install inclure="monplugin_administrations.php" />
   ...
 </paquet>
 ```
+
+That alone is enough. SPIP loads `{prefix}_administrations.php` from the plugin root **by
+naming convention** — there is **no `<install>` tag** in the `paquet.xml` DTD. (The `<install>`
+element existed in the old `plugin.xml` format, removed when SPIP 3 introduced `paquet.xml`.)
 
 - `schema` is the **current schema version** — when it differs from the stored meta value, SPIP
   triggers the upgrade (or install)
 - Without `schema`, SPIP never calls `{prefix}_upgrade()` — tables declared via
   `declarer_tables_objets_sql` / `declarer_tables_principales` are created by `maj_tables()` but
   only if you call it yourself (or at initial site install)
-- `<install inclure="...">` must point to the file containing `{prefix}_upgrade()` and
+- `{prefix}_administrations.php` at the plugin root must contain `{prefix}_upgrade()` and
   `{prefix}_vider_tables()`
 
 ---
@@ -210,4 +212,5 @@ The `schema` version in `paquet.xml` and the highest version key in `$maj` shoul
 - `references/declarer-table.md` — how `field`/`key` descriptors work (used by `maj_tables`)
 - `references/declarer-objet.md` — `principale = 'oui'` makes tables eligible for `maj_tables`
 - `references/sql-api.md` — `sql_alter`, `sql_drop_table` for step operations
-- `references/paquet-xml.md` — `schema`, `<install>` element details
+- `references/paquet-xml.md` — `schema` attribute details
+
