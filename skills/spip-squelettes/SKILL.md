@@ -12,24 +12,29 @@ SPIP generates pages from **squelettes** — `.html` files mixing HTML with BOUC
 ## BOUCLE Syntax
 
 ```html
-<B_name>        <!-- pre-section: output once before body, only if ≥1 result -->
+<B_name>
+<!-- pre-section: output once before body, only if ≥1 result -->
 <BOUCLE_name(TABLE){critère1}{critère2}>
-  ...repeated for each result row...
+  <!-- Content repeated for each result row -->
 </BOUCLE_name>
-<BB_name>       <!-- post-section: output once after body, only if ≥1 result -->
-<//B_name>      <!-- zero-result alternative: output when loop returns nothing -->
+<!-- post-section: output once after body, only if ≥1 result -->
+</B_name>
+<!-- zero-result alternative: output when loop returns nothing -->
+<//B_name>
 ```
 
 **Example — 10 articles, newest first, paginated:**
 
 ```html
-<B_arts><ul></B_arts>
+<B_arts>
+<ul>
 <BOUCLE_arts(ARTICLES){id_rubrique}{par date}{inverse}{pagination 10}>
   <li><a href="#URL_ARTICLE">#TITRE</a> — [(#DATE|affdate_court)]</li>
 </BOUCLE_arts>
-<BB_arts></ul></BB_arts>
-<//B_arts><p>Aucun article.</p>
-[(#PAGINATION)]
+</ul>
+</B_arts>
+<p>No article.</p>
+<//B_arts>
 ```
 
 **Nested loop — context inheritance:**

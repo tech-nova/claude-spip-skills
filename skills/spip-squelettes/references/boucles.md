@@ -5,41 +5,40 @@
 ## Anatomy of a BOUCLE
 
 ```html
-<B_name>                         <!-- pre-section: shown before results, only if ≥1 result -->
+<B_name>
+<!-- pre-section: output once before body, only if ≥1 result -->
 <BOUCLE_name(TABLE){critère1}{critère2}>
-  ... template for each row ...
+  <!-- Content repeated for each result row -->
 </BOUCLE_name>
-<BB_name>                        <!-- post-section: shown after results, only if ≥1 result -->
-</BB_name>
-<//B_name>                       <!-- zero-result alternate: shown only when loop returns 0 rows -->
+<!-- post-section: output once after body, only if ≥1 result -->
+</B_name>
+<!-- zero-result alternative: output when loop returns nothing -->
+<//B_name>
 ```
 
-- **`<B_name>` / `</B_name>`** — pre-section. Wraps HTML that should only appear when the loop has at least one result (e.g. an opening `<ul>`).
-- **`<BB_name>` / `</BB_name>`** — post-section. Appears after loop output, only when ≥1 result (e.g. a closing `</ul>` and pagination link).
-- **`<//B_name>`** — zero-result alternative. Shown when the loop finds nothing (e.g. "No articles yet.").
+- **`<B_name>` - `</BOUCLE_name>`** — pre-section. Wraps HTML that should only appear when the loop has at least one result (e.g. an opening `<ul>`).
+- **`</BOUCLE_name>` - `</B_name>`** — post-section. Appears after loop output, only when ≥1 result (e.g. a closing `</ul>` and pagination link).
+- **`</B_name>` - `<//B_name>`** — zero-result alternative. Shown when the loop finds nothing (e.g. "No articles yet.").
 
 ### Annotated example
 
 ```html
 <B_articles>
 <ul class="article-list">
-</B_articles>
 
 <BOUCLE_articles(ARTICLES){id_rubrique}{par date}{inverse}{pagination 10}>
   <li><a href="#URL_ARTICLE">#TITRE</a> — [(#DATE|affdate)]</li>
 </BOUCLE_articles>
 
-<BB_articles>
 </ul>
 [(#PAGINATION)]
-</BB_articles>
+</B_articles>
 
+  <p>No article in this rubrique</p>
 <//B_articles>
-  <p>Aucun article dans cette rubrique.</p>
-</BOUCLE_articles>
 ```
 
-> **Gotcha:** `<B_name>` and `<BB_name>` are often confused. `<B_name>` is the pre-section (before the loop body) and `<BB_name>` is the post-section (after). Both require at least one result to display. If you put `</ul>` in `<B_name>` you get broken HTML.
+> **Gotcha:** This is not <xml> format
 
 ---
 
@@ -142,27 +141,15 @@ Key balises: `#FICHIER`, `#URL_DOCUMENT`, `#TITRE`, `#EXTENSION`, `#MIME_TYPE`, 
 
 ## BOUCLE HIERARCHIE
 
-`HIERARCHIE` returns the ancestor rubriques of the current page, from root down to the direct parent. It is used to build breadcrumbs.
+`HIERARCHIE` returns the ancestor rubriques of the current page, from root down to the direct parent. It is used to build breadcrumbs. It must be inside a RUBRIQUES or ARTICLES boucle
 
 ```html
-<BOUCLE_hier(HIERARCHIE){}>
+<BOUCLE_hier(HIERARCHIE){id_rubrique}>
   <a href="#URL_RUBRIQUE">#TITRE</a> &gt;
 </BOUCLE_hier>
 ```
 
 > **Invariant:** HIERARCHIE always includes the rubrique of the current page. It walks upward from root to the current rubrique. The final `>` separator is always output (consider using the pre/post sections or CSS to style or trim the last one).
-
-**Breadcrumb with current page title:**
-
-```html
-<nav class="breadcrumb">
-  <a href="#URL_SITE_SPIP">#NOM_SITE_SPIP</a>
-  <BOUCLE_fil(HIERARCHIE){}>
-    &rsaquo; <a href="#URL_RUBRIQUE">#TITRE</a>
-  </BOUCLE_fil>
-  &rsaquo; <span>#TITRE_PAGE</span>
-</nav>
-```
 
 > **Gotcha:** HIERARCHIE does not include the article itself, only its ancestor rubriques. Add the article's `#TITRE` manually after the loop if you want it in the trail.
 
@@ -223,7 +210,6 @@ A recursive boucle calls itself to traverse tree-structured data. The inner bouc
 ```html
 <B_rubs>
 <ul>
-</B_rubs>
 
 <BOUCLE_rubs(RUBRIQUES){id_parent}{par num titre, titre}>
   <li>
@@ -232,9 +218,8 @@ A recursive boucle calls itself to traverse tree-structured data. The inner bouc
   </li>
 </BOUCLE_rubs>
 
-<BB_rubs>
 </ul>
-</BB_rubs>
+</B_rubs>
 ```
 
 - The first call uses `{id_parent}` = 0 (root rubriques).
@@ -322,9 +307,8 @@ By default, DATA loops on a URL are cached for 24h. Override with `{datacache N}
 <BOUCLE_name(CONDITION){si expression}>
   ... shown when condition is true ...
 </BOUCLE_name>
-<//B_name>
   ... shown when condition is false ...
-</BOUCLE_name>
+<//B_name>
 ```
 
 ### Use cases
@@ -334,9 +318,8 @@ By default, DATA loops on a URL are cached for 24h. Override with `{datacache N}
 <BOUCLE_auth(CONDITION){si #SESSION{id_auteur}}>
   <p>Bienvenue, [(#SESSION{nom})] !</p>
 </BOUCLE_auth>
-<//B_auth>
   <p>Veuillez vous <a href="#URL_PAGE{login}">connecter</a>.</p>
-</BOUCLE_auth>
+<//B_auth>
 
 <!-- Show a block only if an ENV variable is set -->
 <BOUCLE_show(CONDITION){si #ENV{mode_debug}}>
